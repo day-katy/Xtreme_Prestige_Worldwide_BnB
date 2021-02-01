@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'listing'
+require './database_connection_setup'
 
 class XtremeBnB < Sinatra::Base
   get '/' do

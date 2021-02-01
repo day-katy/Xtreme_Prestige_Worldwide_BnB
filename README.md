@@ -56,3 +56,6 @@ id listing_id user_id
 
 table: user
 id email password name
+
+CREATE DATABASE xtreme_bnb;
+CREATE DATABASE xtreme_bnb_test;
