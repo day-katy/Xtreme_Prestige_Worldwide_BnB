@@ -26,4 +26,16 @@ class Users
 
   end
 
+  def self.all_users
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'makers_bnb_test')
+    else
+      connection = PG.connect(dbname: 'makers_bnb')
+    end
+
+    result = connection.exec("SELECT * FROM users;")
+    result.map do |user|
+      Users.new(id: user['id'],email: user['email'],password: user['password'],name: user['name'])
+    end
+  end
 end
