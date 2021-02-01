@@ -24,8 +24,6 @@ So I can book places on XtremeBnB,
 I want to request to book a listing.
 ```
 
-Databse names: xtreme_bnb xtreme_bnb_test
-
 ### Listing
 
 | Responsibilities        | Collaborators |
