@@ -3,24 +3,28 @@
 ## User Stories
 
 ```
+As a BnB user,
+So I can see possible listings,
+I want to be able to see listings on XtremeBnB.
+
 As a BnB owner,
-So others can view my space on MakersBnB,
+So others can view my space on XtremeBnB,
 I want to list my space.
 
 As a BnB owner,
-So others can book my space on MakersBnB,
+So others can book my space on XtremeBnB,
 I want to offer a date when the space is available.
 
 As a BnB owner,
-So I can post on MakersBnB,
+So I can post on XtremeBnB,
 I want to sign up.
 
 As a holiday maker,
-So I can book places on MakersBnB,
+So I can book places on XtremeBnB,
 I want to request to book a listing.
 ```
 
-Databse names: makers_bnb makers_bnb_test
+Databse names: xtreme_bnb xtreme_bnb_test
 
 ### Listing
 
@@ -52,3 +56,6 @@ id listing_id user_id
 
 table: user
 id email password name
+
+CREATE DATABASE xtreme_bnb;
+CREATE DATABASE xtreme_bnb_test;
