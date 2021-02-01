@@ -59,5 +59,26 @@ id listing_id user_id
 table: user
 id email password name
 
+### To set up the project
+
+Clone this repository and then run:
+
+```
+bundle
+```
+
+### To set up the databases
+
+Connect to `psql` and create the `xtreme_bnb` database:
+
+```
 CREATE DATABASE xtreme_bnb;
+```
+
+Then create the `xtreme_bnb_test` databse:
+
+```
 CREATE DATABASE xtreme_bnb_test;
+```
+
+To set up the appropriate tables, connect to the database in `psql` and run the SQL scripts in the `db/migrations` folder in the given order.
