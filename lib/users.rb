@@ -38,4 +38,15 @@ class Users
       Users.new(id: user['id'],email: user['email'],password: user['password'],name: user['name'])
     end
   end
+
+  def self.sign_in(email:, password:)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'makers_bnb_test')
+    else
+      connection = PG.connect(dbname: 'makers_bnb')
+    end
+
+    result = connection.exec("SELECT * FROM users WHERE email = '#{email}' and password = '#{password}';")
+    Users.new(id: result[0]['id'],email: result[0]['email'],password: result[0]['password'],name: result[0]['name'])
+  end
 end
