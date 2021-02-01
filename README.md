@@ -22,27 +22,33 @@ I want to request to book a listing.
 
 Databse names: makers_bnb makers_bnb_test
 
-| Listing | |
-| Responsibilities | Collaborators|
-| make a new listing | |
-| be able to show listing | |
-| have an available date | |
+### Listing
+
+| Responsibilities        | Collaborators |
+| ----------------------- | ------------- |
+| make a new listing      |               |
+| be able to show listing |               |
+| have an available date  |               |
 
 table: listing
 id name free_date
 
-| Booking | |
-| Responsibilities | Collaborators|
-| have a booking function | Listing |
+### Booking
+
+| Responsibilities           | Collaborators |
+| -------------------------- | ------------- |
+| have a booking function    | Listing       |
 | be able to check free date |
 
 table: booking
 id listing_id user_id
 
-| User | |
-| Responsibilities | Collaborators |
-| can sign up | Listing |
-| can request booking | Booking |
+### User
+
+| Responsibilities    | Collaborators |
+| ------------------- | ------------- |
+| can sign up         | Listing       |
+| can request booking | Booking       |
 
 table: user
 id email password name
