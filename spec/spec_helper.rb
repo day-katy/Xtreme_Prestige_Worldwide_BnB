@@ -1,3 +1,5 @@
+
+ENV['ENVIRONMENT'] = 'test'
 ENV['RACK_ENV'] = 'test'
 
 # require our Sinatra app file
@@ -18,6 +20,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   # SimpleCov::Formatter::HTMLFormatter
 ])
 SimpleCov.start
+
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
