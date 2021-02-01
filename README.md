@@ -34,6 +34,8 @@ Databse names: xtreme_bnb xtreme_bnb_test
 | be able to show listing |               |
 | have an available date  |               |
 
+![image](https://github.com/day-katy/Xtreme_Prestige_Worldwide_BnB/blob/main/images/user_story_1.png?raw=true)
+
 table: listing
 id name free_date
 
