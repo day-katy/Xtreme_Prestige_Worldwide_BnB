@@ -1,4 +1,3 @@
-
 require_relative './lib/users'
 require 'sinatra/base'
 require './lib/listing.rb'
@@ -36,10 +35,10 @@ class XtremeBnB < Sinatra::Base
     user = Users.authenticate(email: params[:email], password: params[:password])
     session[:user_id] = user.id 
     redirect '/listings'
+  end
 
   get '/book-listing' do
     "Your booking is confirmed"
-
   end
 
   run! if app_file == $0
