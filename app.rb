@@ -1,8 +1,8 @@
-require 'sinatra'
-require 'listing'
-require './database_connection_setup'
-require 'users'
-require 'bcrypt'
+require 'sinatra/base'
+require_relative './lib/listing'
+require_relative 'database_connection_setup'
+require_relative './lib/users'
+# require 'bcrypt'
 
 class XtremeBnB < Sinatra::Base
   enable :sessions
@@ -12,7 +12,7 @@ class XtremeBnB < Sinatra::Base
   end
 
   get '/listings' do
-    @user = Users.find(session[:user_id])
+    @user = Users.find(id: session[:user_id])
     @listings = Listing.all
     erb :index
   end
@@ -22,7 +22,8 @@ class XtremeBnB < Sinatra::Base
   end
 
   post '/users' do
-    @user = Users.create(name: params[:name], email: params[:email], password: params[:password])
+    user = Users.create(name: params['name'], email: params['email'], password: params['password'])
+    session[:user_id] = user.id
     redirect '/listings'
   end
 

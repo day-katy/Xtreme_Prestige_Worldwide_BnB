@@ -2,8 +2,7 @@
   require 'pg'
 
 class Listing
-
-
+  
   def self.all
     @listings = [
       "Oscar's Parisian flat"]

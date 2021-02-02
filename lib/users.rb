@@ -1,14 +1,13 @@
 require 'pg'
 require 'bcrypt'
-require 'database_connection'
+require_relative './database_connection'
 
 class Users
-  attr_reader :id, :email, :password, :name
+  attr_reader :id, :email, :name
 
-  def initialize(id:, email:, password:, name:)
+  def initialize(id:, email:, name:)
     @id = id
     @email = email
-    @password = password
     @name = name
   end
 
@@ -20,8 +19,7 @@ class Users
     Users.new(
       id: result[0]['id'], 
       email: result[0]['email'], 
-      name: result[0]['name'],
-      password: result[0]['password']
+      name: result[0]['name']
       )
   end
 
@@ -33,9 +31,16 @@ class Users
   #   end
   # end
 
-  def self.sign_in(email:, password:)
-    result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}' and password = '#{password}' RETURNING id, email, password, name ;")
+  # def self.sign_in(email:, password:)
+  #   result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}' and password = '#{password}' RETURNING id, email, password, name ;")
 
-    Users.new(id: result[0]['id'], email: result[0]['email'], password: result[0]['password'], name: result[0]['name'])
+  #   Users.new(id: result[0]['id'], email: result[0]['email'], password: result[0]['password'], name: result[0]['name'])
+  # end
+
+  def self.find(id:)
+    return nil unless id
+    result = DatabaseConnection.query("SELECT * FROM users WHERE id = #{id}")
+    Users.new(id: result[0]['id'], email: result[0]['email'], name: result[0]['name'])
   end
+
 end

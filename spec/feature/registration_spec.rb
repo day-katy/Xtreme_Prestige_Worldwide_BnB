@@ -5,7 +5,7 @@ feature 'registration' do
     fill_in('email', with: "test@example.com")
     fill_in('password', with: "password123")
     click_button("Submit")
-     save_and_open_page
+    #  save_and_open_page
     
 
     expect(page).to have_content "Welcome, Katy"
