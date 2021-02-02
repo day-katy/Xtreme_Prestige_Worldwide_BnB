@@ -10,7 +10,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
-require_relative './setup_test_database'
+require 'setup_test_database.rb'
 
 # tell Capybara about our app class
 Capybara.app = XtremeBnB

@@ -1,6 +1,6 @@
 require 'pg'
 
 def setup_test_database
-  connection = PG.connect(dbname: 'peeps_manager_test')
-  connection.exec("TRUNCATE peeps, users;")
+  connection = PG.connect(dbname: 'xtreme_bnb_test')
+  connection.exec("TRUNCATE users;")
 end
