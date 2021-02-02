@@ -4,16 +4,16 @@ describe DatabaseConnection do
 
   describe '.setup' do
     it 'connects to a database' do
-      expect(PG).to receive(:connect).with(dbname: 'peeps_manager_test')
-      DatabaseConnection.setup('peeps_manager_test')
+      expect(PG).to receive(:connect).with(dbname: 'xtreme_bnb_test')
+      DatabaseConnection.setup('xtreme_bnb_test')
     end
   end
 
   describe '.query' do
     it 'executes a query via PG' do
-      connection = DatabaseConnection.setup('peeps_manager_test')
-      expect(connection).to receive(:exec).with('SELECT * FROM peeps;')
-      DatabaseConnection.query('SELECT * FROM peeps;')
+      connection = DatabaseConnection.setup('xtreme_bnb_test')
+      expect(connection).to receive(:exec).with('SELECT * FROM users;')
+      DatabaseConnection.query('SELECT * FROM users;')
     end
   end
 

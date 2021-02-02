@@ -1,4 +1,6 @@
 require 'pg'
+require 'bcrypt'
+require 'database_connection'
 
 class Users
   attr_reader :id, :email, :password, :name
@@ -11,44 +13,29 @@ class Users
   end
 
   def self.create(email:, password:, name:)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'xtreme_bnb_test')
-    else
-      connection = PG.connect(dbname: 'makers_bnb')
-    end
+    encrypted_password = BCrypt::Password.create(password)
 
-    result = connection.exec("INSERT INTO users (email, password, name)
-                              VALUES ('#{email}', '#{password}', '#{name}')
-                              RETURNING id, email, password, name ;")
-
-    Users.new(id: result[0]['id'],email: result[0]['email'],password: result[0]['password'],name: result[0]['name'])
-
-
+    result = DatabaseConnection.query("INSERT INTO users (email, password, name) VALUES('#{email}', '#{encrypted_password}', '#{name}') RETURNING id, email, name;")
+  
+    Users.new(
+      id: result[0]['id'], 
+      email: result[0]['email'], 
+      name: result[0]['name'],
+      password: result[0]['password']
+      )
   end
 
-  def self.all_users
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'xtreme_bnb_test')
-    else
-      connection = PG.connect(dbname: 'makers_bnb')
-    end
+  # def self.all_users
+  #  result = DatabaseConnection.query("SELECT * FROM users;")
 
-  p  result = connection.exec("SELECT * FROM users;")
-    result.map do |user|
-      Users.new(id: user['id'],email: user['email'],password: user['password'],name: user['name'])
-    end
-  end
+  #   result.map do |user|
+  #     Users.new(id: user['id'], email: user['email'], password: user['password'], name: user['name'])
+  #   end
+  # end
 
   def self.sign_in(email:, password:)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'xtreme_bnb_test')
-    else
-      connection = PG.connect(dbname: 'makers_bnb')
-    end
-    
+    result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}' and password = '#{password}' RETURNING id, email, password, name ;")
 
-    p result = connection.exec("SELECT * FROM users WHERE email = '#{email}' and password = '#{password}' RETURNING id, email, password, name ;")
-
-    Users.new(id: result[0]['id'],email: result[0]['email'],password: result[0]['password'],name: result[0]['name'])
+    Users.new(id: result[0]['id'], email: result[0]['email'], password: result[0]['password'], name: result[0]['name'])
   end
 end

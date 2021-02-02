@@ -7,6 +7,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem 'sinatra'
 gem 'pg'
+gem 'bcrypt'
   
 group :test do
   gem 'rspec'
@@ -18,5 +19,5 @@ group :test do
 end
 
 # gem 'sinatra-flash'
-# gem 'bcrypt'
+ 
 
