@@ -11,6 +11,7 @@ class Listing
     @free_date = free_date
   end
 
+
   def self.all
     result = DatabaseConnection.query("SELECT * FROM listings;")
 
