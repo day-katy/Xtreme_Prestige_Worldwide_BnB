@@ -13,7 +13,8 @@ describe Listing do
       # expect(listings[0].id).to include()
       expect(listings[0].name).to include("Oscar's Parisian Flat")
       expect(listings[0].free_date).to include("2021-06-01")
-
     end
   end
+
+
 end
