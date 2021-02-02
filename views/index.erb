@@ -1,5 +1,5 @@
 <ul>
   <% @listings.each do |listing| %>
-    <li><%= listing %></li>
+    <li><%= listing.name %> <%= listing.free_date %></li>
   <% end %>
 </ul>

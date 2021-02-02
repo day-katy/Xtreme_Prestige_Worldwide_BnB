@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'listing'
+require './lib/listing.rb'
 require './database_connection_setup'
 
 class XtremeBnB < Sinatra::Base
