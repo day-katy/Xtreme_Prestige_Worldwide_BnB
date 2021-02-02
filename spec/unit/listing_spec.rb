@@ -16,5 +16,13 @@ describe Listing do
     end
   end
 
+  describe '.create' do
+    it 'creates a new listing' do
+      Listing.create(name: 'Jack''s Sex Dungeon', free_date: 'September 18, 2021')
+      listings = Listing.all
+      expect(listings[0].name).to eq 'Jack''s Sex Dungeon'
+      expect(listings[0].free_date).to eq '2021-09-18'
+    end
+  end
 
 end

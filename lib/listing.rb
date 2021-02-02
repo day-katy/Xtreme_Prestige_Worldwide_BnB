@@ -20,4 +20,13 @@ class Listing
 
   end
 
+  def self.create(name:, free_date:)
+    result = DatabaseConnection.query("INSERT INTO listings (name, free_date)
+    VALUES ('#{name}', '#{free_date}')
+    RETURNING id, name, free_date;")
+
+    Listing.new(id: result[0]['id'], name: result[0]['name'], free_date: result[0]['free_date'])
+
+  end
+
 end
