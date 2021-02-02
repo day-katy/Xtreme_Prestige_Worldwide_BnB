@@ -1,3 +1,4 @@
+
  require 'users'
 # require './lib/database_connection'
 require 'database_helpers'
@@ -47,6 +48,7 @@ end
     it 'returns nil if there is no ID given' do
       expect(Users.find(id: nil)).to eq nil
     end
+
 
   end
 end

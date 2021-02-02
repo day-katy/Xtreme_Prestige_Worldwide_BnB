@@ -1,8 +1,9 @@
-require 'sinatra/base'
-require_relative './lib/listing'
-require_relative 'database_connection_setup'
+
 require_relative './lib/users'
-# require 'bcrypt'
+require 'sinatra/base'
+require './lib/listing.rb'
+require './lib/booking.rb'
+require './database_connection_setup'
 
 class XtremeBnB < Sinatra::Base
   enable :sessions
@@ -35,6 +36,10 @@ class XtremeBnB < Sinatra::Base
     user = Users.authenticate(email: params[:email], password: params[:password])
     session[:user_id] = user.id 
     redirect '/listings'
+
+  get '/book-listing' do
+    "Your booking is confirmed"
+
   end
 
   run! if app_file == $0
