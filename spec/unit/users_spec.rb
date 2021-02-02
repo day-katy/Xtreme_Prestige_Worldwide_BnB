@@ -23,18 +23,16 @@ describe Users do
   end
 
 end
-  # it 'can recall the user from the database' do
-  #   Users.create(email: 'test@example.com', password: 'password', name: 'Charlie')
-  #   expect(Users.all_users[0].name).to eq 'Charlie'
-  #   expect(Users.all_users[0].email).to eq 'test@email.com'
-  #   expect(Users.all_users[0].password).to eq 'password'
-  # end
+ 
+describe '.authenticate' do
+  it 'returns a user given a correct email and password, if they exist' do 
+    user = Users.create(name: 'Katy', email: 'test@example.com', password: 'password123')
+    auth_user = Users.authenticate(email: 'test@example.com', password: 'password123')
 
-  # it 'signs in user' do
-  # auth = Users.sign_in(email: 'email@example.com', password: 'password')
-  # user = Users.create(email: 'email@example.com', password: 'password', name: 'Jack')
-  #   expect(auth.id).to eq user.id
-  # end
+    expect(auth_user.id).to eq user.id 
+  end
+end
+
 
   describe '.find' do
     it 'finds a user by ID' do

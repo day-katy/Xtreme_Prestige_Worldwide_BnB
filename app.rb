@@ -8,7 +8,7 @@ class XtremeBnB < Sinatra::Base
   enable :sessions
 
   get '/' do
-    "Hello world!"
+    redirect '/listings'
   end
 
   get '/listings' do
@@ -24,6 +24,16 @@ class XtremeBnB < Sinatra::Base
   post '/users' do
     user = Users.create(name: params['name'], email: params['email'], password: params['password'])
     session[:user_id] = user.id
+    redirect '/listings'
+  end
+
+  get '/sessions/new' do
+    erb :"sessions/new"
+  end
+
+  post '/sessions' do
+    user = Users.authenticate(email: params[:email], password: params[:password])
+    session[:user_id] = user.id 
     redirect '/listings'
   end
 

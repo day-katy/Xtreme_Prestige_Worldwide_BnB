@@ -23,19 +23,14 @@ class Users
       )
   end
 
-  # def self.all_users
-  #  result = DatabaseConnection.query("SELECT * FROM users;")
-
-  #   result.map do |user|
-  #     Users.new(id: user['id'], email: user['email'], password: user['password'], name: user['name'])
-  #   end
-  # end
-
-  # def self.sign_in(email:, password:)
-  #   result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}' and password = '#{password}' RETURNING id, email, password, name ;")
-
-  #   Users.new(id: result[0]['id'], email: result[0]['email'], password: result[0]['password'], name: result[0]['name'])
-  # end
+  def self.authenticate(email:, password:)
+    result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}' ")
+    Users.new(
+      id: result[0]['id'], 
+      name: result[0]['name'],
+      email: result[0]['email']
+      )
+  end
 
   def self.find(id:)
     return nil unless id

@@ -4,7 +4,7 @@ feature 'registration' do
     fill_in('name', with: "Katy")
     fill_in('email', with: "test@example.com")
     fill_in('password', with: "password123")
-    click_button("Submit")
+    click_button("Sign Up")
     #  save_and_open_page
     
 
