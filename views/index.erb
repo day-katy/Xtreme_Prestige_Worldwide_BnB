@@ -9,5 +9,8 @@
 <ul>
   <% @listings.each do |listing| %>
     <li><%= listing.name %> <%= listing.free_date %></li>
+    <form action='/book-listing' method='get'>
+      <input type='submit' value='Book'>
+    </form>
   <% end %>
 </ul>
