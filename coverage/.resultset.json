@@ -1,30 +1,19 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/ttwigden/Desktop/Makers/Projects/Xtreme_Prestige_Worldwide_BnB/spec/unit/listing_spec.rb": {
+      "/Users/ttwigden/Desktop/Makers/Projects/Xtreme_Prestige_Worldwide_BnB/spec/feature/viewing_listings_spec.rb": {
         "lines": [
           1,
-          null,
-          1,
-          null,
           1,
           1,
           1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
+          0,
+          0,
           null,
           null
         ]
       }
     },
-    "timestamp": 1612265182
+    "timestamp": 1612275942
   }
 }
