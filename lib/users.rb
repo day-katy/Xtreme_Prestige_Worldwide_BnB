@@ -33,7 +33,7 @@ class Users
       connection = PG.connect(dbname: 'makers_bnb')
     end
 
-  p  result = connection.exec("SELECT * FROM users;")
+ result = connection.exec("SELECT * FROM users;")
     result.map do |user|
       Users.new(id: user['id'],email: user['email'],password: user['password'],name: user['name'])
     end
@@ -45,10 +45,11 @@ class Users
     else
       connection = PG.connect(dbname: 'makers_bnb')
     end
-    
 
-    p result = connection.exec("SELECT * FROM users WHERE email = '#{email}' and password = '#{password}' RETURNING id, email, password, name ;")
 
-    Users.new(id: result[0]['id'],email: result[0]['email'],password: result[0]['password'],name: result[0]['name'])
+    result = connection.exec("SELECT * FROM users WHERE email = '#{email}' and password = '#{password}';")
+
+   x = Users.new(result[0]['id'].to_i, result[0]['email'], result[0]['password'], result[0]['name'])
+   p x
   end
 end
