@@ -1,5 +1,16 @@
+<head>
+<link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<h1> Xtreme BnB </h1>
+
 <ul>
   <% @listings.each do |listing| %>
-    <li><%= listing %></li>
+    <li><%= listing.name %> <%= listing.free_date %></li>
+    <form action='/book-listing' method='get'>
+      <input type='submit' value='Book'>
+    </form>
   <% end %>
 </ul>
