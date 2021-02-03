@@ -67,10 +67,10 @@ class XtremeBnB < Sinatra::Base
   end
 
   post '/book-listing/:id' do
-    Booking.create(user_id: session[:user_id], listing_id: params[:id], date: params[:date])
+    listing = Listing.find(id: params[:id])
+    Booking.create(user_id: session[:user_id], listing_id: params[:id], date: listing.free_date)
     redirect '/listings'
   end
-
 
   run! if app_file == $0
 
