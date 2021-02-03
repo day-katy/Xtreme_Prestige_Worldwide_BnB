@@ -21,11 +21,15 @@ class XtremeBnB < Sinatra::Base
     erb :'listing/new'
   end
 
-  post '/listings' do
+  post '/listings/confirmation' do
     # @user = Users.find(id: session[:user_id])
     @new_listing = Listing.create(name: params[:name], free_date: params[:free_date])
     session[:listing_id] = @new_listing.id
-    redirect '/listings'
+    redirect '/listings/confirmation'
+  end
+
+  get '/listings/confirmation' do
+    erb :"listing/confirmation"
   end
 
   get '/users/new' do
