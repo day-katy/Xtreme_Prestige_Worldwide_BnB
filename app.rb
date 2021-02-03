@@ -35,9 +35,8 @@ class XtremeBnB < Sinatra::Base
 
   post '/sessions' do
     user = Users.authenticate(email: params[:email], password: params[:password])
-   
     if user
-      session[:user_id] = user.id 
+      session[:user_id] = user.id
       redirect '/listings'
     else
       flash[:notice] = 'Please check your email or password.'
@@ -49,6 +48,11 @@ class XtremeBnB < Sinatra::Base
     "Your booking is confirmed"
   end
 
+  post '/sessions/destroy' do
+    session.clear
+    flash[:notice] = 'You have signed out.'
+    redirect('/listings')
+  end
   run! if app_file == $0
 
 end
