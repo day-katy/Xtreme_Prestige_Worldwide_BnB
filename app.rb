@@ -60,15 +60,18 @@ class XtremeBnB < Sinatra::Base
     end
   end
 
-  get '/book-listing' do
-    "Your booking is confirmed"
-  end
-
   post '/sessions/destroy' do
     session.clear
     flash[:notice] = 'You have signed out.'
     redirect('/listings')
   end
+
+  post '/book-listing/:id' do
+    Booking.create(user_id: session[:user_id], listing_id: params[:id], date: params[:date])
+    redirect '/listings'
+  end
+
+
   run! if app_file == $0
 
 end
