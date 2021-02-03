@@ -24,19 +24,25 @@ describe Users do
   end
 
 end
- 
+
 describe '.authenticate' do
-  it 'returns a user given a correct email and password, if they exist' do 
+  it 'returns a user given a correct email and password, if they exist' do
     user = Users.create(name: 'Katy', email: 'test@example.com', password: 'password123')
     auth_user = Users.authenticate(email: 'test@example.com', password: 'password123')
 
-    expect(auth_user.id).to eq user.id 
+    expect(auth_user.id).to eq user.id
   end
 
   it 'returns nil given an uncorrect email address' do
     user = Users.create(name: 'Katy', email: 'test@example.com', password: 'password123')
 
     expect(Users.authenticate(email: 'notherightemail@me.com', password: 'password123')).to be_nil
+  end
+
+  it 'returns nil given an incorrect password' do
+    user = Users.create(name: 'Katy', email: 'test@example.com', password: 'password')
+
+    expect(Users.authenticate(email: 'test@example.com', password: 'incorrectpassword' )).to be_nil
   end
 
 end
@@ -59,4 +65,3 @@ end
 
   end
 end
-#  need to sort this out.
