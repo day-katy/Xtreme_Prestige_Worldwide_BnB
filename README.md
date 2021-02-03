@@ -22,6 +22,16 @@ I want to sign up.
 As a holiday maker,
 So I can book places on XtremeBnB,
 I want to request to book a listing.
+
+
+As a BnB owner
+So holiday makers know who to contact
+I want to link my user info and listing info.
+ 
+As a BnB owner
+So I can rent out my place
+I want to be notified via email of a booking request.
+
 ```
 
 ### Listing
