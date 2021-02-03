@@ -17,6 +17,17 @@ class XtremeBnB < Sinatra::Base
     erb :index
   end
 
+  get '/listing/new' do
+    erb :'listing/new'
+  end
+
+  post '/listings' do
+    # @user = Users.find(id: session[:user_id])
+    @new_listing = Listing.create(name: params[:name], free_date: params[:free_date])
+    session[:listing_id] = @new_listing.id
+    redirect '/listings'
+  end
+
   get '/users/new' do
     erb :"users/new"
   end
@@ -33,7 +44,7 @@ class XtremeBnB < Sinatra::Base
 
   post '/sessions' do
     user = Users.authenticate(email: params[:email], password: params[:password])
-    session[:user_id] = user.id 
+    session[:user_id] = user.id
     redirect '/listings'
   end
 

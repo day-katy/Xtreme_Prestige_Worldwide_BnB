@@ -11,6 +11,7 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 require 'setup_test_database.rb'
+require 'sign_in_helper.rb'
 
 # tell Capybara about our app class
 Capybara.app = XtremeBnB
