@@ -1,5 +1,16 @@
 h1 {
-  color: #000000;
+  color: red;
   font-family: "Righteous", cursive;
+  font-size: 64px;
   text-align: center;
+}
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
 }
