@@ -1,11 +1,13 @@
 require_relative './lib/users'
 require 'sinatra/base'
+require 'sinatra/flash'
 require './lib/listing.rb'
 require './lib/booking.rb'
 require './database_connection_setup'
 
 class XtremeBnB < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
 
   get '/' do
     redirect '/listings'
@@ -48,14 +50,24 @@ class XtremeBnB < Sinatra::Base
 
   post '/sessions' do
     user = Users.authenticate(email: params[:email], password: params[:password])
-    session[:user_id] = user.id
-    redirect '/listings'
+    if user
+      session[:user_id] = user.id
+      redirect '/listings'
+    else
+      flash[:notice] = 'Please check your email or password.'
+      redirect '/sessions/new'
+    end
   end
 
   get '/book-listing' do
     "Your booking is confirmed"
   end
 
+  post '/sessions/destroy' do
+    session.clear
+    flash[:notice] = 'You have signed out.'
+    redirect('/listings')
+  end
   run! if app_file == $0
 
 end

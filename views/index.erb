@@ -9,8 +9,27 @@
 <body>
 <h1> Xtreme BnB </h1>
 
+<h2>
+  <%= flash[:notice] %>
+</h2>
+
+<% if !@user %>
+<form action="/users/new" method="get">
+  <input type="submit" value="Sign Up">
+</form>
+
+<form action='/sessions/new' method='get'>
+  <input type='submit' value='Sign in'>
+</form>
+<% end %>
+
+
+
 <% if @user %>
   <h1>Welcome, <%= @user.name %></h1>
+  <form action='/sessions/destroy' method='post'>
+    <input type='submit' value='Sign Out' />
+  </form>
 <% end %>
 
 <ul>
@@ -22,12 +41,3 @@
   <% end %>
 </ul>
 
-
-<form action="/users/new" method="get">
-    <input type="submit" value="Sign Up">
-  </form>
-
-<form action="/listing/new" method="get">
-  <input type="submit" value="Add listing">
-</form>
-</body>
