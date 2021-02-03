@@ -23,8 +23,6 @@
 </form>
 <% end %>
 
-
-
 <% if @user %>
   <h1>Welcome, <%= @user.name %></h1>
   <form action='/sessions/destroy' method='post'>
@@ -34,8 +32,9 @@
 
 <ul>
   <% @listings.each do |listing| %>
-    <li><%= listing.name %> <%= listing.free_date %></li>
-    <form action='/book-listing' method='get'>
+    <li id='listing-<%= listing.id %>'> 
+    <%= listing.name %> <%= listing.free_date %></li>
+    <form action='/book-listing/<%= listing.id %>' method='post'>
       <input type='submit' value='Book'>
     </form>
   <% end %>

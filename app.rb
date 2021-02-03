@@ -59,8 +59,9 @@ class XtremeBnB < Sinatra::Base
     end
   end
 
-  get '/book-listing' do
-    "Your booking is confirmed"
+  post '/book-listing/:id' do
+    Booking.create(user_id: session[:user_id], listing_id: params[:id], date: params[:date])
+    redirect '/listings'
   end
 
   post '/sessions/destroy' do
