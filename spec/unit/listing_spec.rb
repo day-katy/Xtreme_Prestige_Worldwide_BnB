@@ -18,10 +18,20 @@ describe Listing do
 
   describe '.create' do
     it 'creates a new listing' do
-      Listing.create(name: 'Jack''s Sex Dungeon', free_date: 'September 18, 2021')
+      Listing.create(name: 'Jack''s Sex Dungeon', free_date: "September 18, 2021")
       listings = Listing.all
       expect(listings[0].name).to eq 'Jack''s Sex Dungeon'
-      expect(listings[0].free_date).to eq '2021-09-18'
+      expect(listings[0].free_date).to eq "2021-09-18"
+    end
+  end
+
+  describe '.find' do
+    it 'finds a listing by id' do
+      listing = Listing.create(name: "Sputnik Space Station", free_date: "November 23, 2021")
+      result = Listing.find(id: listing.id)
+      expect(result.id).to eq listing.id
+      expect(result.name).to eq listing.name
+      expect(result.free_date).to eq listing.free_date
     end
   end
 
