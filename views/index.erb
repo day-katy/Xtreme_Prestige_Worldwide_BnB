@@ -1,10 +1,12 @@
-
 <head>
+<style>
 <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-</head>
 
+</style>
+</head>
+<body>
 <h1> Xtreme BnB </h1>
 
 <% if @user %>
@@ -28,3 +30,4 @@
 <form action="/listing/new" method="get">
   <input type="submit" value="Add listing">
 </form>
+</body>
