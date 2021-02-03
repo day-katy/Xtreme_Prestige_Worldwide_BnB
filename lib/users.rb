@@ -25,6 +25,8 @@ class Users
 
   def self.authenticate(email:, password:)
     result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}' ")
+    return unless result.any?
+    
     Users.new(
       id: result[0]['id'], 
       name: result[0]['name'],
