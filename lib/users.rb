@@ -35,7 +35,6 @@ class Users
       )
   end
 
-<<<<<<< HEAD
   def self.all_users
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'xtreme_bnb_test')
@@ -62,12 +61,12 @@ class Users
    x = Users.new(result[0]['id'].to_i, result[0]['email'], result[0]['password'], result[0]['name'])
    p x
   end
-=======
+
   def self.find(id:)
     return nil unless id
     result = DatabaseConnection.query("SELECT * FROM users WHERE id = #{id}")
     Users.new(id: result[0]['id'], email: result[0]['email'], name: result[0]['name'])
   end
 
->>>>>>> d538ecfa344104d94391aadf2cc469f5cac26318
+
 end
