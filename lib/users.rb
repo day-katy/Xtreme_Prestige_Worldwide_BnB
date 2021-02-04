@@ -36,11 +36,14 @@ class Users
   end
 
 
+
   def self.find(user_id:)
     return nil unless user_id
     result = DatabaseConnection.query("SELECT * FROM users WHERE user_id = #{user_id}")
     Users.new(user_id: result[0]['user_id'], email: result[0]['email'], name: result[0]['name'])
 
+
   end
+
 
 end

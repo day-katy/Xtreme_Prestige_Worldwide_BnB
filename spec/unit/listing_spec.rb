@@ -22,6 +22,7 @@ describe Listing do
       listings = Listing.all
       expect(listings[0].name).to eq 'Jack''s Sex Dungeon'
       expect(listings[0].free_date).to eq "2021-09-18"
+
     end
   end
 
@@ -32,6 +33,7 @@ describe Listing do
       expect(result.listing_id).to eq listing.listing_id
       expect(result.name).to eq listing.name
       expect(result.free_date).to eq listing.free_date
+      expect(result.host_id).to eq listing.host_id
     end
   end
 

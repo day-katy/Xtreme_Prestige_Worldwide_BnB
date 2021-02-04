@@ -25,7 +25,11 @@ class XtremeBnB < Sinatra::Base
 
   post '/listings/confirmation' do
     new_listing = Listing.create(name: params[:name], free_date: params[:free_date])
-    session[:new_listing_id] = new_listing.listing_id
+
+    session[:new_listing_id] = new_listing.id
+    # we added this in host id
+    session[:host_id] = new_listing.host_id
+
     redirect '/listings/confirmation'
   end
 
