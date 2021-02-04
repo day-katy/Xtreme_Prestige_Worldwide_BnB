@@ -1,0 +1,9 @@
+<a href="mailto:<%@host.email%>?
+     subject=Booking request for <%=listing.name%>">
+     Dear <%=@host.name%>,
+     You have received a booking request for <%= listing.name %>.
+     Please go online to respond to this request.
+     Thank you,
+     Xtreme BnB</a>
+
+         <%= host = Users.find(user_id) %>

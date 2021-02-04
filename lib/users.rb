@@ -35,8 +35,6 @@ class Users
       )
   end
 
-
-
   def self.find(user_id:)
     return nil unless user_id
     result = DatabaseConnection.query("SELECT * FROM users WHERE user_id = #{user_id}")

@@ -8,7 +8,6 @@ class Listing
 
   def initialize(listing_id:, name:, free_date:, host_id:)
     @listing_id = listing_id
-
     @name = name
     @free_date = free_date
     @host_id = host_id
@@ -25,12 +24,8 @@ class Listing
 
   end
 
-  def self.create(name:, free_date:)
-    result = DatabaseConnection.query("INSERT INTO listings (name, free_date)
-    VALUES ('#{name}', '#{free_date}') RETURNING listing_id, name, free_date, host_id;")
-
-    
-
+  def self.create(name:, free_date:,  host_id:)
+    result = DatabaseConnection.query("INSERT INTO listings (name, free_date, host_id) VALUES ('#{name}', '#{free_date}', '#{host_id}') RETURNING listing_id, name, free_date, host_id;")
     Listing.new(listing_id: result[0]['listing_id'], name: result[0]['name'], free_date: result[0]['free_date'], host_id: result[0]['host_id'])
 
   end
