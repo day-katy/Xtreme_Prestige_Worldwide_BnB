@@ -37,9 +37,9 @@
 
 <ul>
   <% @listings.each do |listing| %>
-    <li id='listing-<%= listing.id %>'>
+    <li id='listing-<%= listing.listing_id %>'>
     <%= listing.name %> <%= listing.free_date %></li>
-    <form action='/book-listing/<%= listing.id %>' method='post'>
+    <form action='/book-listing/<%= listing.listing_id %>' method='post'>
       <input type='submit' value='Book'>
     </form>
   <% end %>
