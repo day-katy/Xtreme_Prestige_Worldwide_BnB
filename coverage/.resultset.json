@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/feature/authentication_spec.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/feature/authentication_spec.rb": {
         "lines": [
           1,
           1,
@@ -54,7 +54,7 @@
           null
         ]
       },
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/feature/create_new_listing_spec.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/feature/create_new_listing_spec.rb": {
         "lines": [
           1,
           1,
@@ -71,8 +71,10 @@
           1,
           1,
           1,
+          1,
           null,
           null,
+          1,
           1,
           1,
           1,
@@ -85,19 +87,19 @@
           null
         ]
       },
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/feature/make_a_booking_spec.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/feature/make_a_booking_spec.rb": {
         "lines": [
           1,
           1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
           0,
           null,
           null
         ]
       },
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/feature/registration_spec.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/feature/registration_spec.rb": {
         "lines": [
           1,
           1,
@@ -114,7 +116,7 @@
           null
         ]
       },
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/feature/viewing_listings_spec.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/feature/viewing_listings_spec.rb": {
         "lines": [
           1,
           1,
@@ -130,7 +132,7 @@
           null
         ]
       },
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/unit/booking_spec.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/unit/booking_spec.rb": {
         "lines": [
           1,
           1,
@@ -150,7 +152,7 @@
           null
         ]
       },
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/unit/database_connection_spec.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/unit/database_connection_spec.rb": {
         "lines": [
           1,
           null,
@@ -174,7 +176,7 @@
           null
         ]
       },
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/unit/listing_spec.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/unit/listing_spec.rb": {
         "lines": [
           1,
           null,
@@ -191,6 +193,7 @@
           null,
           1,
           1,
+          1,
           null,
           null,
           null,
@@ -200,10 +203,12 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           null,
           null,
+          1,
           1,
           1,
           1,
@@ -218,7 +223,7 @@
           null
         ]
       },
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/unit/users_spec.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/unit/users_spec.rb": {
         "lines": [
           null,
           1,
@@ -289,7 +294,7 @@
           null
         ]
       },
-      "/Users/katy/Desktop/Makers_Academy/week_5/Xtreme_BnB/spec/database_helpers.rb": {
+      "/Users/oscar/MakerAcademy/week5/Xtreme_Prestige_Worldwide_BnB/spec/database_helpers.rb": {
         "lines": [
           1,
           null,
@@ -310,6 +315,6 @@
         ]
       }
     },
-    "timestamp": 1612450903
+    "timestamp": 1612453475
   }
 }
