@@ -1,5 +1,5 @@
 
- require 'users'
+require 'users'
 # require './lib/database_connection'
 require 'database_helpers'
 require 'bcrypt'
@@ -10,7 +10,7 @@ describe Users do
    it 'allows you to make an account' do
     test_user = Users.create(name: 'Katy', email: 'test@example.com', password: 'password123')
 
-    persisted_data = persisted_data(table: :users, id: test_user.id)
+    persisted_data = persisted_data(table: :users, id: test_user.user_id)
 
     expect(test_user).to be_a Users
     expect(test_user.email).to eq 'test@example.com'
@@ -30,7 +30,7 @@ describe '.authenticate' do
     user = Users.create(name: 'Katy', email: 'test@example.com', password: 'password123')
     auth_user = Users.authenticate(email: 'test@example.com', password: 'password123')
 
-    expect(auth_user.id).to eq user.id
+    expect(auth_user.user_id).to eq user.user_id
   end
 
   it 'returns nil given an uncorrect email address' do
@@ -51,15 +51,15 @@ end
   describe '.find' do
     it 'finds a user by ID' do
       user = Users.create(name: 'Katy', email: 'test@example.com', password: 'password')
-      result = Users.find(id: user.id)
+      result = Users.find(user_id: user.user_id)
 
-      expect(result.id).to eq user.id
+      expect(result.user_id).to eq user.user_id
       expect(result.email).to eq user.email
       expect(result.name).to eq user.name
     end
 
     it 'returns nil if there is no ID given' do
-      expect(Users.find(id: nil)).to eq nil
+      expect(Users.find(user_id: nil)).to eq nil
     end
 
 
