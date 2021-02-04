@@ -30,7 +30,7 @@ class Listing
   end
 
   def self.find(id:)
-    result = DatabaseConnection.query("SELECT * FROM listings WHERE id = '#{id}'")
+    result = DatabaseConnection.query("SELECT * FROM listings WHERE id = #{id};")
     Listing.new(id: result[0]['id'], name: result[0]['name'], free_date: result[0]['free_date'])
 
   end
