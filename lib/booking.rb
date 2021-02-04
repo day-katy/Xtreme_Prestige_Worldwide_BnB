@@ -1,5 +1,5 @@
 class Booking
-  attr_reader :user_id, :listing_id, :date
+  attr_reader :user_id, :listing_id, :date, :id
   def initialize(id:, user_id:, listing_id:, date:)
     @id = id
     @user_id = user_id

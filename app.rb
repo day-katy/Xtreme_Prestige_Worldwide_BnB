@@ -24,10 +24,8 @@ class XtremeBnB < Sinatra::Base
   end
 
   post '/listings/confirmation' do
-    # @user = Users.find(id: session[:user_id])
     new_listing = Listing.create(name: params[:name], free_date: params[:free_date])
     session[:new_listing_id] = new_listing.id
-    # session[:listing_id] = @new_listing.id
     redirect '/listings/confirmation'
   end
 
@@ -61,22 +59,24 @@ class XtremeBnB < Sinatra::Base
     end
   end
 
-  post '/sessions/destroy' do
-    session.clear
-    flash[:notice] = 'You have signed out.'
-    redirect('/listings')
-  end
-
   post '/book-listing/:id' do
     listing = Listing.find(id: params[:id])
-    new_booking = Booking.create(user_id: session[:user_id], listing_id: params[:id], date: listing.free_date)
-    p session[:new_booking] = new_booking.id
+    session[:listing_id] = params[:id]
+    new_booking = Booking.create(user_id: session[:user_id], listing_id: session[:listing_id], date: listing.free_date)
+
+    session[:new_booking_id] = new_booking.id
     redirect '/booking/confirmation'
   end
 
   get '/booking/confirmation' do
-    @listing = Listing.find(id: session[:new_booking])
+    @listing = Listing.find(id: session[:listing_id])
     erb :"booking/booking_confirmation"
+  end
+
+  post '/sessions/destroy' do
+    session.clear
+    flash[:notice] = 'You have signed out.'
+    redirect('/listings')
   end
 
   run! if app_file == $0
