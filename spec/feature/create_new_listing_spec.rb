@@ -12,6 +12,16 @@ feature "Create listing" do
     fill_in('name', with: "Kilimanjaro Cabin")
     fill_in('free_date', with: '2021-09-22')
     click_button("Create listing")
-    expect(page).to have_content("Your listing was successfully created!")
+    expect(page).to have_content("Your listing Kilimanjaro Cabin was successfully created!")
   end
+
+  scenario "I want to see my listing on the listings page" do
+    visit('/listing/new')
+    fill_in('name', with: "Kilimanjaro Cabin")
+    fill_in('free_date', with: '2021-09-22')
+    click_button("Create listing")
+    click_button("Back to listings")
+
+    expect(page).to have_content "Kilimanjaro"
+  end 
 end
