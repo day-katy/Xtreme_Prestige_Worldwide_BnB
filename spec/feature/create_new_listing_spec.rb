@@ -11,6 +11,7 @@ feature "Create listing" do
     visit('/listing/new')
     fill_in('name', with: "Kilimanjaro Cabin")
     fill_in('free_date', with: '2021-09-22')
+    fill_in('price', with: 400)
     click_button("Create listing")
     expect(page).to have_content("Your listing Kilimanjaro Cabin was successfully created!")
   end
@@ -19,6 +20,7 @@ feature "Create listing" do
     visit('/listing/new')
     fill_in('name', with: "Kilimanjaro Cabin")
     fill_in('free_date', with: '2021-09-22')
+    fill_in('price', with: 400)
     click_button("Create listing")
     click_button("Back to listings")
 
