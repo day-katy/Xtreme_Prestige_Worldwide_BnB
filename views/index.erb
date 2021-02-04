@@ -1,5 +1,50 @@
+<head>
+
+<link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<h1> Xtreme BnB </h1>
+
+<nav>
+  <% if !@user %>
+  <form action="/users/new" method="get">
+    <input type="submit" value="Sign Up">
+  </form>
+
+  <form action='/sessions/new' method='get'>
+    <input type='submit' value='Sign in'>
+  </form>
+  <% else %>
+  <form action='/sessions/destroy' method='post'>
+    <input type='submit' value='Sign Out' />
+  </form>
+  <% end %>
+</nav>
+
+<h2>
+  <%= flash[:notice] %>
+</h2>
+
+<% if @user %>
+  <h1>Welcome, <%= @user.name %></h1>
+
+<% end %>
+
 <ul>
   <% @listings.each do |listing| %>
-    <li><%= listing %></li>
+    <li id='listing-<%= listing.id %>'>
+    <%= listing.name %> <%= listing.free_date %></li>
+    <form action='/book-listing/<%= listing.id %>' method='post'>
+      <input type='submit' value='Book'>
+    </form>
   <% end %>
 </ul>
+
+<form action="listing/new" method="get">
+    <input type="submit" value="Add listing" />
+</form>
