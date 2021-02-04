@@ -10,6 +10,8 @@ gem 'sinatra-flash'
 gem 'pg'
 gem 'bcrypt'
 gem 'selenium-webdriver'
+gem 'shotgun'
+gem 'webrick'
   
 group :test do
   gem 'rspec'
