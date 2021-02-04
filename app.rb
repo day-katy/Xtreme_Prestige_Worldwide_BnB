@@ -14,7 +14,7 @@ class XtremeBnB < Sinatra::Base
   end
 
   get '/listings' do
-    @user = Users.find(id: session[:user_id])
+    @user = Users.find(user_id: session[:user_id])
     @listings = Listing.all
     erb :index
   end
@@ -25,12 +25,12 @@ class XtremeBnB < Sinatra::Base
 
   post '/listings/confirmation' do
     new_listing = Listing.create(name: params[:name], free_date: params[:free_date])
-    session[:new_listing_id] = new_listing.id
+    session[:new_listing_id] = new_listing.listing_id
     redirect '/listings/confirmation'
   end
 
   get '/listings/confirmation' do
-    @listing = Listing.find(id: session[:new_listing_id])
+    @listing = Listing.find(listing_id: session[:new_listing_id])
     erb :"listing/confirmation"
   end
 
@@ -40,7 +40,7 @@ class XtremeBnB < Sinatra::Base
 
   post '/users' do
     user = Users.create(name: params['name'], email: params['email'], password: params['password'])
-    session[:user_id] = user.id
+    session[:user_id] = user.user_id
     redirect '/listings'
   end
 
@@ -51,7 +51,7 @@ class XtremeBnB < Sinatra::Base
   post '/sessions' do
     user = Users.authenticate(email: params[:email], password: params[:password])
     if user
-      session[:user_id] = user.id
+      session[:user_id] = user.user_id
       redirect '/listings'
     else
       flash[:notice] = 'Please check your email or password.'
@@ -60,16 +60,16 @@ class XtremeBnB < Sinatra::Base
   end
 
   post '/book-listing/:id' do
-    listing = Listing.find(id: params[:id])
-    session[:listing_id] = params[:id]
+    listing = Listing.find(listing_id: params[:listing_id])
+    session[:listing_id] = params[:listing_id]
     new_booking = Booking.create(user_id: session[:user_id], listing_id: session[:listing_id], date: listing.free_date)
 
-    session[:new_booking_id] = new_booking.id
+    session[:new_booking_id] = new_booking.booking_id
     redirect '/booking/confirmation'
   end
 
   get '/booking/confirmation' do
-    @listing = Listing.find(id: session[:listing_id])
+    @listing = Listing.find(listing_id: session[:listing_id])
     erb :"booking/booking_confirmation"
   end
 

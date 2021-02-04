@@ -10,7 +10,7 @@ describe Listing do
 
       listings = Listing.all
 
-      # expect(listings[0].id).to include()
+      # expect(listings[0].listing_id).to include()
       expect(listings[0].name).to include("Oscar's Parisian Flat")
       expect(listings[0].free_date).to include("2021-06-01")
     end
@@ -28,8 +28,8 @@ describe Listing do
   describe '.find' do
     it 'finds a listing by id' do
       listing = Listing.create(name: "Sputnik Space Station", free_date: "November 23, 2021")
-      result = Listing.find(id: listing.id)
-      expect(result.id).to eq listing.id
+      result = Listing.find(listing_id: listing.listing_id)
+      expect(result.listing_id).to eq listing.listing_id
       expect(result.name).to eq listing.name
       expect(result.free_date).to eq listing.free_date
     end

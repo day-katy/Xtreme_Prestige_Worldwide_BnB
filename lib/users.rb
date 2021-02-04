@@ -3,10 +3,10 @@ require 'bcrypt'
 require_relative './database_connection'
 
 class Users
-  attr_reader :id, :email, :name
+  attr_reader :user_id, :email, :name
 
-  def initialize(id:, email:, name:)
-    @id = id
+  def initialize(user_id:, email:, name:)
+    @user_id = user_id
     @email = email
     @name = name
   end
@@ -14,10 +14,10 @@ class Users
   def self.create(email:, password:, name:)
     encrypted_password = BCrypt::Password.create(password)
 
-    result = DatabaseConnection.query("INSERT INTO users (email, password, name) VALUES('#{email}', '#{encrypted_password}', '#{name}') RETURNING id, email, name;")
+    result = DatabaseConnection.query("INSERT INTO users (email, password, name) VALUES('#{email}', '#{encrypted_password}', '#{name}') RETURNING user_id, email, name;")
 
     Users.new(
-      id: result[0]['id'],
+      user_id: result[0]['user_id'],
       email: result[0]['email'],
       name: result[0]['name']
       )
@@ -29,45 +29,18 @@ class Users
     return unless BCrypt::Password.new(result[0]['password']) == password
 
     Users.new(
-      id: result[0]['id'],
+      user_id: result[0]['user_id'],
       name: result[0]['name'],
       email: result[0]['email']
       )
   end
 
-<<<<<<< HEAD
-  def self.all_users
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'xtreme_bnb_test')
-    else
-      connection = PG.connect(dbname: 'makers_bnb')
-    end
 
- result = connection.exec("SELECT * FROM users;")
-    result.map do |user|
-      Users.new(id: user['id'],email: user['email'],password: user['password'],name: user['name'])
-    end
+  def self.find(user_id:)
+    return nil unless user_id
+    result = DatabaseConnection.query("SELECT * FROM users WHERE user_id = #{user_id}")
+    Users.new(user_id: result[0]['user_id'], email: result[0]['email'], name: result[0]['name'])
+
   end
 
-  def self.sign_in(email:, password:)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'xtreme_bnb_test')
-    else
-      connection = PG.connect(dbname: 'makers_bnb')
-    end
-
-
-    result = connection.exec("SELECT * FROM users WHERE email = '#{email}' and password = '#{password}';")
-
-   x = Users.new(result[0]['id'].to_i, result[0]['email'], result[0]['password'], result[0]['name'])
-   p x
-  end
-=======
-  def self.find(id:)
-    return nil unless id
-    result = DatabaseConnection.query("SELECT * FROM users WHERE id = #{id}")
-    Users.new(id: result[0]['id'], email: result[0]['email'], name: result[0]['name'])
-  end
-
->>>>>>> d538ecfa344104d94391aadf2cc469f5cac26318
 end
