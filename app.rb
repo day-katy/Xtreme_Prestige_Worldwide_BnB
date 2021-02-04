@@ -68,8 +68,13 @@ class XtremeBnB < Sinatra::Base
 
   post '/book-listing/:id' do
     listing = Listing.find(id: params[:id])
-    Booking.create(user_id: session[:user_id], listing_id: params[:id], date: listing.free_date)
-    redirect '/listings'
+    session[:new_booking] = Booking.create(user_id: session[:user_id], listing_id: params[:id], date: listing.free_date)
+    redirect '/booking/confirmation'
+  end
+
+  get '/booking/confirmation' do
+    successful_booking = session[:new_booking]
+    erb :"booking/booking_confirmation"
   end
 
   run! if app_file == $0
