@@ -42,13 +42,9 @@
     <%= listing.host_id %></li>
     <% Users.find(user_id: listing.host_id) %>
     <form action='/book-listing/<%= listing.listing_id %>' method='post'>
-     <a href="mailto:<% Users.find(user_id: listing.host_id).email %>?
-          subject=Booking request for <%=listing.name%>">
-Book
-      </a>
- <input type='submit' value='Book'>
+    <input type='submit' value='Book'>
     </form>
-  <% end %>
+   <% end %>
 </ul>
 
 <form action="listing/new" method="get">

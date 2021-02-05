@@ -60,8 +60,12 @@ class XtremeBnB < Sinatra::Base
     end
   end
 
-  post '/book-listing/:id' do
+  post '/book-listing/:listing_id' do
+    p "AAAAAAH!"
+    p params 
     listing = Listing.find(listing_id: params[:listing_id])
+    p "OHMYGOOOOODNESS"
+    p params
     session[:listing_id] = params[:listing_id]
     new_booking = Booking.create(user_id: session[:user_id], listing_id: session[:listing_id], date: listing.free_date)
 
