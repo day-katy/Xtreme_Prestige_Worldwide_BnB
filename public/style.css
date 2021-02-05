@@ -17,6 +17,10 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  color:#fff
+}
+
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -49,7 +53,7 @@ html, body {
 }
 
 li {
-  padding-top: 24px;
+  padding-top: 12px;
   display: flex;
 
 }
@@ -60,6 +64,10 @@ div.listings {
   padding: 12px;
   margin: 0 auto;
   border-radius: 8px;
+}
+
+div.sign_in {
+  margin: 0 auto;
 }
 
 input[type=submit] {
@@ -74,11 +82,11 @@ input[type=submit] {
   cursor: pointer;
   border-radius: 4px;
 }
-
+//
 .container {
   border: 1px solid grey;
 }
-
+//
 .description {
   text-align: center;
 }
