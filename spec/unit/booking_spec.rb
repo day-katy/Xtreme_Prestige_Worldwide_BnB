@@ -1,8 +1,8 @@
 describe Booking do
   describe '.book' do
     it 'makes a booking' do
-      listing = Listing.create(name: 'Oscar''s Parisian Flat', free_date: '2021-09-09')
       user = Users.create(email: 'test@email.com', password: 'password', name: 'Charlie')
+      listing = Listing.create(name: 'Oscar''s Parisian Flat', free_date: '2021-09-09', host_id: user.user_id)
 
       # user = double('User', :id => 1)
       # listing = double('Listing', :id => 1, :free_date => '2021-09-09')
