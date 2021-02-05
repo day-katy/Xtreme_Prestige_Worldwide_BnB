@@ -8,6 +8,7 @@
 
 </head>
 <body>
+<header>
 <h1> Xtreme BnB </h1>
 
 <nav>
@@ -20,21 +21,27 @@
     <input type='submit' value='Sign in'>
   </form>
   <% else %>
+  <form action="listing/new" method="get">
+    <input type="submit" value="Add listing" />
+  </form>
   <form action='/sessions/destroy' method='post'>
     <input type='submit' value='Sign Out' />
   </form>
   <% end %>
 </nav>
 
+</header>
+
 <h2>
   <%= flash[:notice] %>
 </h2>
 
 <% if @user %>
-  <h1>Welcome, <%= @user.name %></h1>
+  <h1 class="welcome">Welcome, <%= @user.name %></h1>
 
 <% end %>
 
+<div class="listings">
 <ul>
   <% @listings.each do |listing| %>
     <li id='listing-<%= listing.listing_id %>'>
@@ -44,7 +51,9 @@
     </form>
   <% end %>
 </ul>
+</div>
 
-<form action="listing/new" method="get">
-    <input type="submit" value="Add listing" />
-</form>
+<footer>
+</footer>
+
+
