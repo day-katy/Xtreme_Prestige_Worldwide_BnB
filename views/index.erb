@@ -42,7 +42,7 @@
     <%= listing.host_id %></li>
     <% Users.find(user_id: listing.host_id) %>
     <form action='/book-listing/<%= listing.listing_id %>' method='post'>
-    <input type='submit' value='Book'>
+    <input type='submit' value='Request booking'>
     </form>
    <% end %>
 </ul>

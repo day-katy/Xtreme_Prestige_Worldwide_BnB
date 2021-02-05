@@ -1,16 +1,19 @@
-
-
-<%= @listing.name %> has been sent a booking request.
-
-
-
-
-
-
+<h1> XtremeBnB </h1>
 
 <form action='/listings' method="get" >
   <input type="submit" value="Home">
 </form>
 
+Press below to email your booking request to <%= @listing.name %>
 
-
+<% if @user.user_id != listing.host_id %>
+      <a href="mailto:<% Users.find(user_id: listing.host_id).email %>?
+      subject=Booking request for <%=listing.name%>">?
+      Dear <%= Users.find(user_id: listing.host_id).name %>,
+      You have received a booking request for <%= listing.name %>.
+      Please go online to respond to this request.
+      Thank you,
+      Xtreme BnB</a>
+      </a>
+    <% elsif @user.user_id == listing.host_id %>
+      <% end %>
