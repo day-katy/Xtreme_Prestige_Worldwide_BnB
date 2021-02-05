@@ -9,3 +9,18 @@
       </a>
     <% elsif @user.user_id == listing.host_id %>
       <% end %>
+
+
+      <% if @user.user_id != listing.host_id %>
+      <a href="mailto:<% Users.find(user_id: listing.host_id).email %>?
+      subject=Booking request for <%=listing.name%>">?
+      Dear <%= Users.find(user_id: listing.host_id).name %>,
+      You have received a booking request for <%= listing.name %>.
+      Please go online to respond to this request.
+      Thank you,
+      Xtreme BnB</a>
+      </a>
+    <% elsif @user.user_id == listing.host_id %>
+      <% end %>
+
+      Press below to email your booking request to <%= @listing.name %>

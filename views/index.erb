@@ -53,11 +53,13 @@
       <li> <%= listing.name %>, <%= listing.free_date %>, £<%= listing.price %>/night </li>
       <div class="container">  <% listing.host_id %>
       <li class="description"> Description: <%= listing.description %>
-        <%= Users.find(user_id: listing.host_id).name %></li>
+        </li>
       </div>
+      This amazing location is brought to you by: <%= Users.find(user_id: listing.host_id).name %>
       <form action='/book-listing/<%= listing.listing_id %>' method='post'>
         <input type='submit' value='Book'>
       </form>
+      
     <% end %>
   </ul>
 
