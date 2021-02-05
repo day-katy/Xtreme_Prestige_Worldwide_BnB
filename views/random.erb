@@ -1,11 +1,3 @@
-<h1> XtremeBnB </h1>
-
-<form action='/listings' method="get" >
-  <input type="submit" value="Home">
-</form>
-
-Press below to email your booking request to <%= @listing.name %>
-
 <% if @user.user_id != listing.host_id %>
       <a href="mailto:<% Users.find(user_id: listing.host_id).email %>?
       subject=Booking request for <%=listing.name%>">?

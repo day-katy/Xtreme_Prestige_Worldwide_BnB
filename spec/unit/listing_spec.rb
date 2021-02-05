@@ -20,7 +20,8 @@ describe Listing do
 
   describe '.create' do
     it 'creates a new listing' do
-      Listing.create(name: 'Jack''s Sex Dungeon', free_date: "September 18, 2021",
+user = Users.create(name: "Katy Day", email: "test@example.com", password: "password123")      
+Listing.create(name: 'Jack''s Sex Dungeon', free_date: "September 18, 2021", host_id: user.user_id,
                      price: 1, description: 'stay away')
       listings = Listing.all
       expect(listings[0].name).to eq 'Jack''s Sex Dungeon'
@@ -33,7 +34,8 @@ describe Listing do
 
   describe '.find' do
     it 'finds a listing by id' do
-      listing = Listing.create(name: "Sputnik Space Station", free_date: "November 23, 2021",
+user = Users.create(name: "Katy Day", email: "test@example.com", password: "password123")     
+listing = Listing.create(name: "Sputnik Space Station", free_date: "November 23, 2021", host_id: user.user_id, 
                                price: 500, description: 'not all its cracked up to be')
       result = Listing.find(listing_id: listing.listing_id)
       expect(result.listing_id).to eq listing.listing_id
