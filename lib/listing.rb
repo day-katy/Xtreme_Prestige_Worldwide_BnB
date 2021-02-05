@@ -3,7 +3,6 @@
 
 class Listing
 
-
   attr_reader :listing_id, :name, :free_date , :host_id, :price, :description, :image
 
   def initialize(listing_id:, name:, free_date:, host_id:, price:, description:, image:)
@@ -22,7 +21,7 @@ class Listing
       Listing.new(listing_id: listing['listing_id'], name: listing['name'],
                   free_date: listing['free_date'], host_id: listing['host_id'],
                   price: listing['price'], description: listing['description'],
-                image: listing['image'])
+                  image: listing['image'])
     end
 
   end
@@ -32,7 +31,8 @@ class Listing
     VALUES ('#{name}', '#{free_date}', '#{price}', '#{description}', '#{image}') RETURNING listing_id, name, free_date, host_id, price, description, image;")
     Listing.new(listing_id: result[0]['listing_id'], name: result[0]['name'],
                 free_date: result[0]['free_date'], host_id: result[0]['host_id'],
-                price: result[0]['price'], description: result[0]['description'], image: result[0]['image'])
+                price: result[0]['price'], description: result[0]['description'],
+                image: result[0]['image'])
   end
 
 
@@ -40,7 +40,8 @@ class Listing
     result = DatabaseConnection.query("SELECT * FROM listings WHERE listing_id = #{listing_id};")
     Listing.new(listing_id: result[0]['listing_id'], name: result[0]['name'],
                 free_date: result[0]['free_date'], host_id: result[0]['host_id'],
-                price: result[0]['price'], description: result[0]['description'], image: result[0]['image'])
+                price: result[0]['price'], description: result[0]['description'],
+                image: result[0]['image'])
   end
 
 end

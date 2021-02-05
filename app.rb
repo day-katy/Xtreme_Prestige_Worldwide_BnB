@@ -16,7 +16,6 @@ class XtremeBnB < Sinatra::Base
   get '/listings' do
     @user = Users.find(user_id: session[:user_id])
     @listings = Listing.all
-
     erb :index
   end
 
@@ -25,7 +24,9 @@ class XtremeBnB < Sinatra::Base
   end
 
   post '/listings/confirmation' do
-    new_listing = Listing.create(name: params[:name], free_date: params[:free_date])
+    new_listing = Listing.create(name: params[:name], free_date: params[:free_date],
+                                price: params[:price], description: params[:description],
+                                image: params[:image])
 
     session[:new_listing_id] = new_listing.listing_id
     # we added this in host id
