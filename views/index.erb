@@ -47,17 +47,20 @@
   <ul>
     <% @listings.each do |listing| %>
     <li id='listing-<%= listing.listing_id %>'>
+
         <img src= "<%= listing.image %>" alt="shack" style="width:15%">
       </li>
       <li> <%= listing.name %>, <%= listing.free_date %>, £<%= listing.price %>/night </li>
-      <div class="container">
-      <li class="description"> Description: <%= listing.description %></li>
+      <div class="container">  <% listing.host_id %>
+      <li class="description"> Description: <%= listing.description %>
+        <%= Users.find(user_id: listing.host_id).name %></li>
       </div>
       <form action='/book-listing/<%= listing.listing_id %>' method='post'>
         <input type='submit' value='Book'>
       </form>
     <% end %>
   </ul>
+
 </div>
 
 <footer>

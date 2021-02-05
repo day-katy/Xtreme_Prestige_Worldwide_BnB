@@ -7,7 +7,7 @@ feature "Create listing" do
   end
 
   scenario "I want to create my listing" do
-    # user_sign_in
+    user_sign_up
     visit('/listing/new')
     fill_in('name', with: "Kilimanjaro Cabin")
     fill_in('free_date', with: '2021-09-22')
@@ -19,6 +19,7 @@ feature "Create listing" do
   end
 
   scenario "I want to see my listing on the listings page" do
+    user_sign_up
     visit('/listing/new')
     fill_in('name', with: "Kilimanjaro Cabin")
     fill_in('free_date', with: '2021-09-22')

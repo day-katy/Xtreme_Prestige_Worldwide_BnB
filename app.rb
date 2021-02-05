@@ -28,10 +28,9 @@ class XtremeBnB < Sinatra::Base
                                 price: params[:price], description: params[:description],
                                 image: params[:image])
 
-    session[:new_listing_id] = new_listing.listing_id
-    # we added this in host id
-    session[:host_id] = new_listing.host_id
 
+    session[:new_listing_id] = new_listing.listing_id
+    session[:host_id] = session[:user_id]
     redirect '/listings/confirmation'
   end
 
@@ -65,12 +64,11 @@ class XtremeBnB < Sinatra::Base
     end
   end
 
-  post '/book-listing/:id' do
+  post '/book-listing/:listing_id' do
     listing = Listing.find(listing_id: params[:listing_id])
     session[:host_id] = listing.host_id
     session[:listing_id] = params[:listing_id]
     new_booking = Booking.create(user_id: session[:user_id], listing_id: session[:listing_id], date: listing.free_date)
-
     session[:new_booking_id] = new_booking.booking_id
     redirect '/booking/confirmation'
   end
