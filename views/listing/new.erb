@@ -1,10 +1,11 @@
 <!-- in views/listing/new.erb -->
 
-Please fill out the below information to add a listing
+<h2>Please fill out the below information to add a listing</h2>
 
-<form action="/listings/confirmation" method="post">
+<form action="/listings/confirmation" method="post" id='new_listing'>
   <input type="name" name="name" placeholder="Name of listing">
   <input type="date" name="free_date">
   <input type="text" name="price">
   <input type="submit" value="Create listing">
 </form>
+<textarea rows="4" cols="50" name="description" form="new_listing">
