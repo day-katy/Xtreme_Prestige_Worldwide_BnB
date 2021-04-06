@@ -52,10 +52,15 @@ html, body {
   height:100%;
 }
 
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 li {
   padding-top: 12px;
   display: flex;
-
+  flex-direction: column;
 }
 
 div.listings {

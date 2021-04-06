@@ -44,26 +44,31 @@
 
 
 <div class="listings">
+<% if @listings %>
   <ul>
     <% @listings.each do |listing| %>
+    <div class="listing">
     <li id='listing-<%= listing.listing_id %>'>
 
         <img src= "<%= listing.image %>" alt="shack" style="max-width:30%">
-      </li>
+
       <h3><%= listing.name %></h3>
-      <li>
+
       <p><%= listing.free_date %>, £<%= listing.price %>/night </p></li>
-      <div class="container">  <% listing.host_id %>
-      <li class="description"> Description: <%= listing.description %>
-        </li>
-      </div>
-      This amazing location is brought to you by: <%= Users.find(user_id: listing.host_id).name %>
+      <a class="container">  <% listing.host_id %>
+        <a class="description"> Description: <%= listing.description %> </a>
+      </a>  
       <form action='/book-listing/<%= listing.listing_id %>' method='post'>
         <input type='submit' value='Book'>
       </form>
+    </li>
+    </div>
 
     <% end %>
   </ul>
+  <% else %>
+      <p> No listings </p>
+  <% end %>
 
 </div>
 
